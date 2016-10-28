@@ -1,9 +1,9 @@
 (ns file-counter.gui
-  (:use seesaw.core)
-  (:use seesaw.chooser :only [choose-file])
-  (:use file-counter.counter :only [count-root-directory root-directory directory-count total-file-count
-                                    excluded-file-count included-file-count exclusions])
-  (:use seesaw.mig))
+  (:use seesaw.core
+        [seesaw.chooser :only [choose-file]]
+        [file-counter.counter :only [count-root-directory root-directory directory-count total-file-count
+                                     excluded-file-count included-file-count exclusions]]
+        seesaw.mig))
 
 (def directory-label "Dir label")
 (def directory-button "Dir button")

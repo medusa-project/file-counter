@@ -1,5 +1,5 @@
 (ns file-counter.core
-  (:use file-counter.gui :only [create-layout])
+  (:use [file-counter.gui :only [create-layout]])
   (:gen-class))
 
 ;;;This might not be how to do it with the GUI, but
