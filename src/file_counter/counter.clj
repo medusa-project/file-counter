@@ -1,6 +1,7 @@
-(ns file-counter.counter)
+(ns file-counter.counter
+  (:use [clojure.string :only [split-lines trim blank?]]))
 
-(def root-directory (atom (.getCanonicalFile (java.io.File. "."))))
+(def root-directory (atom (java.io.File. ".")))
 (def directory-count (atom 0))
 (def total-file-count (atom 0))
 (def excluded-file-count (atom 0))
@@ -8,8 +9,8 @@
 (def exclusions (atom #{}))
 
 (defn reset-counts []
-  (doseq [directory-count total-file-count excluded-file-count included-file-count]
-    #(reset! % 0)))
+  (doseq [atom [directory-count total-file-count excluded-file-count included-file-count]]
+    (reset! atom 0)))
 
 (defn count-directory []
   (swap! directory-count inc'))
@@ -27,5 +28,12 @@
 
 (defn count-root-directory []
   (reset-counts)
-  (doseq [entry (file-seq root-directory)]
+  (doseq [entry (file-seq @root-directory)]
     (count-entry entry)))
+
+(defn parse-exclusions [text]
+  (->> text
+       (split-lines)
+       (map trim)
+       (filter (complement blank?))
+       (set)))
