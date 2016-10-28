@@ -1,14 +1,15 @@
 # file-counter
 
-A Clojure library designed to ... well, that part is up to you.
+A simple clojure/seesaw app for counting files in 
+a directory tree with exclusions. See doc/intro.md for more.
 
 ## Usage
 
-FIXME
+Use lein uberjar to build a standalone jar. Then
 
-## License
+    java -jar <standalone jar>
 
-Copyright © 2016 FIXME
+to run. To distribute just make a .sh or .bat that
+runs the jar and zip up.
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+

@@ -6,4 +6,5 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [seesaw "1.4.5"]]
   :main file-counter.core
-  :aot [file-counter.core])
+  :aot [file-counter.core]
+  :uberjar-name "file-counter.jar")

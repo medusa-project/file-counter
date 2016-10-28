@@ -55,6 +55,7 @@
 (defn create-layout []
   (mig-panel :items [[directory-button ""]
                      [directory-label "span, wrap"]
+                     ["Exclusions (one per line):"]
                      [(scrollable exclusion-text-area) "span, wrap"]
                      [run-button "wrap"]
                      ["Directories:" ""]
