@@ -13,6 +13,7 @@
   (doseq [atom [directory-count total-file-count excluded-file-count included-file-count]]
     (reset! atom 0)))
 
+;;;Needed for some optional arguments in Java call below
 (def link-options (into-array LinkOption nil))
 
 ;;;Return the subdirectories to facilitate recursive processing
