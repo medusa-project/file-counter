@@ -17,7 +17,10 @@
 
 ;;;Return the subdirectories to facilitate recursive processing
 (defn process-directory [path]
-  (let [entries (filter #(not (Files/isSymbolicLink %)) (map #(.toPath %) (.listFiles (.toFile path))))
+  (let [entries (filter #(not (Files/isSymbolicLink %)) (->> path
+                                                             (.toFile)
+                                                             (.listFiles)
+                                                             (map #(.toPath %))))
         directories (filter #(Files/isDirectory % link-options) entries)
         files (filter #(Files/isRegularFile % link-options) entries)
         excluded-files (filter #(contains? @exclusions (.toString (.getFileName %))) files)
