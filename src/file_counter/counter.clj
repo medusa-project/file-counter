@@ -37,7 +37,8 @@
 
 (defn count-directories [path-list]
   (when (not (empty? path-list))
-    (recur `(~@(process-directory (first path-list)) ~@(rest path-list)))))
+    (let [new-dirs (process-directory (first path-list))]
+      (recur (concat new-dirs (rest path-list))))))
 
 (defn count-root-directory []
   (reset-counts)
