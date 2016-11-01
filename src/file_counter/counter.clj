@@ -10,8 +10,7 @@
 (def exclusions (atom #{}))
 
 (defn reset-counts []
-  (doseq [atom [directory-count total-file-count excluded-file-count included-file-count]]
-    (reset! atom 0)))
+  (run! #(reset! % 0) [directory-count total-file-count excluded-file-count included-file-count]))
 
 ;;;Needed for some optional arguments in Java call below
 (def link-options (into-array LinkOption nil))

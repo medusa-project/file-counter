@@ -42,8 +42,8 @@
 ;;;I don't know why doing the reset of the atoms inside count-root-directory doesn't reset these because of the bind, but
 ;;;it doesn't seem to happen. So we reset the labels manually as part of the process.
 (defn reset-labels []
-  (doseq [label [directory-count-label total-file-count-label excluded-file-count-label included-file-count-label]]
-    (config! label :text "0")))
+  (run! #(config! % :text "0")
+        [directory-count-label total-file-count-label excluded-file-count-label included-file-count-label]))
 
 (listen run-button
         :action (fn [e]
